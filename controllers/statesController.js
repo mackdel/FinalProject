@@ -36,14 +36,16 @@ const getState = async (req, res) => {
 const getFunFact = async (req, res) => {
     // find state with req code in MongoDB
     const state = await State.findOne({stateCode: req.code}).exec();
+    // get state name 
+    const statename = data.states.find(st => st.code === req.code).state;
     // If there is no state, exit
-    if (!state) return res.status(404).json({'message': `No Fun Facts found for ${req.code}`});
+    if (!state) return res.status(404).json({'message': `No Fun Facts found for ${statename}`});
 
     // find state's fun facts
     const funfacts = state.funfacts;
     // if state has no funfacts, exit 
     // this is when we delete all the fun facts from a state that is in mongodb
-    if (funfacts.length === 0) return res.status(404).json({'message': `No Fun Facts found for ${req.code}`});
+    if (funfacts.length === 0) return res.status(404).json({'message': `No Fun Facts found for ${statename}`});
 
     // get random funfact from funfacts array and send
     const funfact = funfacts[Math.floor(Math.random()* funfacts.length)];
@@ -118,6 +120,9 @@ const createFunFact = async (req,res) => {
 }
 
 const patchFunFact = async (req, res) => {
+    // get state name 
+    const statename = data.states.find(st => st.code === req.code).state;
+    // get request body data
     const funfact = req?.body?.funfact;
     const index = req?.body?.index;
     // Check if we got required data
@@ -126,8 +131,8 @@ const patchFunFact = async (req, res) => {
     // find state with req code
     const state = await State.findOne({stateCode: req.code}).exec();
     // Checks if state exists, state has funfacts, and if has funfact index
-    if (!state || !state.funfacts) return res.status(400).json({ 'message': `No Fun Facts found for ${req.code}`});
-    if (!state.funfacts[index-1]) return res.status(400).json({ 'message': `No Fun Fact found at that index for ${req.code}`});
+    if (!state || !state.funfacts) return res.status(400).json({ 'message': `No Fun Facts found for ${statename}`});
+    if (!state.funfacts[index-1]) return res.status(400).json({ 'message': `No Fun Fact found at that index for ${statename}`});
     // Update funfact and send 
     state.funfacts[index-1] = funfact;
     await state.save();
@@ -135,14 +140,16 @@ const patchFunFact = async (req, res) => {
 }
 
 const deleteFunFact = async (req,res) => {
+    // get state name 
+    const statename = data.states.find(st => st.code === req.code).state;
     // Check if we got required data and is valid
     const index = req?.body?.index;
     if (!index) return res.status(400).json({ 'message': "State fun fact index value required"});
     // find state with req code
     const state = await State.findOne({stateCode: req.code}).exec();
     // Checks if state exists, state has funfacts, and if has funfact index
-    if (!state || !state.funfacts) return res.status(400).json({ 'message': `No Fun Facts found for ${req.code}`});
-    if (!state.funfacts[index-1]) return res.status(400).json({ 'message': `No Fun Fact found at that index for ${req.code}`});
+    if (!state || !state.funfacts) return res.status(400).json({ 'message': `No Fun Facts found for ${statename}`});
+    if (!state.funfacts[index-1]) return res.status(400).json({ 'message': `No Fun Fact found at that index for ${statename}`});
     // Delete funfact and send
     state.funfacts.splice(index-1,1);
     await state.save();
