@@ -259,3 +259,5 @@
 04/29/24	21:00:36	c1428859-f112-42b5-93a5-37812c278016	DELETE	undefined	/states/al/funfact
 04/29/24	21:00:45	c80ec339-8eb0-46cb-929e-5570119eea53	DELETE	undefined	/states/al/funfact
 04/29/24	21:19:02	3ae5a54f-7903-4a42-9a55-13b01f7ac32f	GET	undefined	/states/
+04/29/24	21:44:43	21dc4a5e-2eec-4e19-b1a1-e7b32cd736d7	GET	undefined	/states/ne/funfact
+04/29/24	21:46:27	c9576873-055e-4a71-8dc6-f2294c1c32cc	GET	undefined	/states/ne/funfact

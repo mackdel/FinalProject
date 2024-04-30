@@ -47,7 +47,9 @@ const getFunFact = async (req, res) => {
 
     // get random funfact from funfacts array and send
     const funfact = funfacts[Math.floor(Math.random()* funfacts.length)];
-    res.json(funfact);
+    res.json({
+        "funfact" : funfact
+    });
 }
 
 const getCapital = (req, res) => {
