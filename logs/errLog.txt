@@ -1,0 +1,7 @@
+04/29/24	11:34:40	679d586f-e6a0-4758-94e6-c50598b89eac	TypeError: req.params.toUpperCase is not a function
+04/29/24	11:50:03	ff1b6aa6-6811-4f2f-b1f4-924af026e04a	MongooseError: `Model.find()` cannot run without a model as `this`. Make sure you are calling `MyModel.find()` where `MyModel` is a Mongoose model.
+04/29/24	11:51:02	d9286c66-8e81-4ed8-8291-51d0df389063	MongooseError: `Model.find()` cannot run without a model as `this`. Make sure you are calling `MyModel.find()` where `MyModel` is a Mongoose model.
+04/29/24	11:52:34	a4ab43c1-970a-49fb-b62a-f98de29da172	TypeError: string "AK" is not a function
+04/29/24	15:18:25	501571b2-d7b6-44fc-9369-bc1ddacdac75	ReferenceError: key is not defined
+04/29/24	15:18:45	f9cefad3-58a4-4210-a157-5442b85a13bc	ReferenceError: value is not defined
+04/29/24	15:19:10	8dd71231-8d01-4dd6-9311-f798bf8f0c52	ReferenceError: value is not defined
