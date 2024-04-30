@@ -24,10 +24,4 @@ router.route('/:state/population')
 router.route('/:state/admission')
     .get(verifyState, statesController.getAdmission);
 
-/* 
-    .post(statesController.createNewEmployee)
-    .put(statesController.updateEmployee)
-    .delete(statesController.deleteEmployee);   
-*/
-
 module.exports = router;
